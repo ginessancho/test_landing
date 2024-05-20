@@ -20,6 +20,8 @@
   </template>
   
   <script>
+  import emailjs from 'emailjs-com';
+  
   export default {
     data() {
       return {
@@ -32,26 +34,24 @@
     },
     methods: {
       async sendEmail() {
-        const response = await fetch('https://api.your-email-service.com/send', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            to: 'gines@alteridad.org',
-            from: this.form.email,
-            subject: `Message from ${this.form.name}`,
-            text: this.form.message
-          })
-        });
+        try {
+          const result = await emailjs.send('service_d5of9bq', 'template_mty42ez', {
+            from_name: this.form.name,
+            from_email: this.form.email,
+            message: this.form.message
+          }, 'gines@alteridad.org');
   
-        if (response.ok) {
-          alert('Email sent successfully!');
-          this.form.name = '';
-          this.form.email = '';
-          this.form.message = '';
-        } else {
-          alert('Failed to send email.');
+          if (result.status === 200) {
+            alert('Email sent successfully!');
+            this.form.name = '';
+            this.form.email = '';
+            this.form.message = '';
+          } else {
+            alert('Failed to send email.');
+          }
+        } catch (error) {
+          console.error('Error sending email:', error);
+          alert('An error occurred while sending the email.');
         }
       }
     }
@@ -110,4 +110,5 @@
     background-color: #2980b9;
   }
   </style>
+  
   
