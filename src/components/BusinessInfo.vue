@@ -1,15 +1,11 @@
 <template>
-    <div class="business-info">
-      <img :src="logo" alt="Alteridad Logo" class="logo"/>
-      <h1>{{ name }}</h1>
-      <p>{{ description }}</p>
-      <div class="contact-info">
-        <p><strong>Email:</strong> {{ email }}</p>
-        <p><strong>Phone:</strong> {{ phone }}</p>
-        <p><strong>Location:</strong> {{ location }}</p>
-      </div>
-    </div>
-  </template>
+  <div class="business-info">
+    <img :src="logo" alt="Alteridad Logo" class="logo" />
+    <h1>{{ name }}</h1>
+    <p class="description">{{ description }}</p>
+    <button @click="navigateToContact" class="contact-button">Contact</button>
+  </div>
+</template>
   
   <script>
   export default {
@@ -17,24 +13,54 @@
       return {
         name: 'Alteridad',
         description: 'Consulting in social policy, corporate finance, and information technology.',
-        email: 'contact@alteridad.com',
-        phone: '+33 1 23 45 67 89',
-        location: 'Paris, France',
-        logo: require('@/assets/logo.png') // Place your logo in the assets folder
+        logo: require('@/assets/alteridad-2.png')
       };
+  },
+  methods: {
+    navigateToContact() {
+      this.$router.push('/contact');
     }
-  };
-  </script>
-  
-  <style scoped>
-  .business-info {
-    text-align: center;
-    padding: 20px;
   }
-  
-  .logo {
-    max-width: 200px;
-    margin-bottom: 20px;
-  }
-  </style>
-  
+};
+</script>
+
+<style scoped>
+.business-info {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #2c3e50;
+}
+
+.description {
+  font-size: 1.2em;
+  color: #34495e;
+  margin: 20px 0;
+}
+
+.contact-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+  background-color: #2980b9;
+}
+</style>

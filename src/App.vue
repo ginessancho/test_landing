@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <BusinessInfo />
+    <router-view />
   </div>
 </template>
 
 <script>
-import BusinessInfo from './components/BusinessInfo.vue';
-
 export default {
-  name: 'App',
-  components: {
-    BusinessInfo
-  }
+  name: 'App'
 };
 </script>
 
@@ -25,4 +20,5 @@ export default {
   margin-top: 60px;
 }
 </style>
+
 
