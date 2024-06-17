@@ -6,22 +6,23 @@
     <button @click="navigateToContact" class="contact-button">Contact</button>
   </div>
 </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        name: 'Alteridad',
-        description: 'Consulting in social policy, corporate finance, and information technology.',
-        logo: require('@/assets/alteridad-2.png')
-      };
+
+<script>
+export default {
+  name: 'BusinessInfo',
+  data() {
+    return {
+      name: 'Alteridad',
+      description: 'Data solutions for business and public policy.',
+      logo: require('@/assets/alteridad-2.png'),
+    }
   },
   methods: {
     navigateToContact() {
-      this.$router.push('/contact');
-    }
-  }
-};
+      this.$router.push('/contact')
+    },
+  },
+}
 </script>
 
 <style scoped>
