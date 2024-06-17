@@ -4,6 +4,10 @@ module.exports = {
     node: true,
   },
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+  },
   plugins: [
     '@typescript-eslint',
   ],
@@ -13,9 +17,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
-  parserOptions: {
-    parser: '@typescript-eslint/parser',
-  },
   rules: {
     'vue/multi-word-component-names': 'off',
   },
